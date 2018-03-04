@@ -128,7 +128,8 @@ public class array
     
     void addAfterElement(int element)
     {
-        if(linearSearch(element))
+        int index =linearSearch(element);
+        if(index!=-1)
         {
             
         }
@@ -140,19 +141,19 @@ public class array
     
     
     
-    boolean linearSearch(int element)
+    int linearSearch(int element)
     {
         for (int i = 0; i < size; i++) 
         {
             if(arr[i]==element)
             {
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
     
-    boolean binarySearch(int element)
+    int binarySearch(int element)
     {
         int start=0,end=size-1,mid;
         for(;start<=end;)
@@ -160,7 +161,7 @@ public class array
             mid= (start+end)/2;
             if(arr[mid] == element)
             {
-                return true;
+                return mid;
             }
             else if(arr[mid] > element)
             {
@@ -171,7 +172,7 @@ public class array
                 start = mid+1;
             }
         }
-        return false;
+        return -1;
     }
     public static void main(String[] args) throws IOException
     {        
@@ -276,9 +277,10 @@ public class array
                         {
                             case 1 :
                             {
-                                if(a1.linearSearch(searchElement))
+                                int result = a1.linearSearch(searchElement);
+                                if(result!=-1)
                                 {
-                                    System.out.println("Found!!");
+                                    System.out.println("Found!! at position "+ (result+1));
                                 }
                                 else
                                 {
@@ -288,9 +290,10 @@ public class array
                             }
                             case 2 :
                             {
-                                if(a1.binarySearch(searchElement))
+                                int result = a1.binarySearch(searchElement);
+                                if(result!=-1)
                                 {
-                                    System.out.println("Found!!");
+                                    System.out.println("Found!! at position "+ (result+1));
                                 }
                                 else
                                 {
