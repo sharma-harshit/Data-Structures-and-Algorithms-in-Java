@@ -126,6 +126,53 @@ public class array
         size++;
     }
     
+    void addAfterElement(int element)
+    {
+        if(linearSearch(element))
+        {
+            
+        }
+        else
+        {
+            System.out.println("Entered element doesn't exist!!\nPlease try again.");
+        }
+    }
+    
+    
+    
+    boolean linearSearch(int element)
+    {
+        for (int i = 0; i < size; i++) 
+        {
+            if(arr[i]==element)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    boolean binarySearch(int element)
+    {
+        int start=0,end=size-1,mid;
+        for(;start<=end;)
+        {
+            mid= (start+end)/2;
+            if(arr[mid] == element)
+            {
+                return true;
+            }
+            else if(arr[mid] > element)
+            {
+                end=mid-1;
+            }
+            else if (arr[mid] < element)
+            {
+                start = mid+1;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) throws IOException
     {        
         array a1 = new array();
@@ -136,6 +183,7 @@ public class array
             System.out.println("2. Show the values in the array");
             System.out.println("3. Adding an element in the array");
             System.out.println("4. Deleting an element from the array");
+            System.out.println("5. Search any element in the array");
             
             choice = Integer.parseInt(br.readLine());
             switch(choice)
@@ -155,12 +203,12 @@ public class array
                     int inner_choice;
                     do
                     {
-                        System.out.println("1.Add element at first poistion");
-                        System.out.println("2.Add element at last poistion");
-                        System.out.println("3.Add element at the middle poistion");                        
-                        System.out.println("4.Adding an element any particular position");
-                        System.out.println("5.Add element after a particular element");
-                        System.out.println("6.Add element before a particular element");
+                        System.out.println("1. Add element at first poistion");
+                        System.out.println("2. Add element at last poistion");
+                        System.out.println("3. Add element at the middle poistion");                        
+                        System.out.println("4. Adding an element any particular position");
+                        System.out.println("5. Add element after a particular element");
+                        System.out.println("6. Add element before a particular element");
                         
                         inner_choice=Integer.parseInt(br.readLine());
                         switch(inner_choice)
@@ -191,13 +239,18 @@ public class array
                                 
                                 break;
                             }
+                            case 6 :
+                            {
+                                
+                                break;
+                            }                            
                             default:
                             {
                                 System.out.println("Enter valid choice");
                             }
                         }
                     }
-                    while(inner_choice!=5);
+                    while(inner_choice!=7);
                     
                     break;
                 }
@@ -208,6 +261,50 @@ public class array
                 }
                 case 5 : 
                 {
+                    int inner_choice;
+                    System.out.println("Enter the element to be searched");
+                    int searchElement = Integer.parseInt(br.readLine());
+                    do
+                    {
+                        System.out.println("1. Linear Search");
+                        System.out.println("2. Binary Search");
+                        System.out.println("3. Go back to the previous menu");
+                        
+                        inner_choice=Integer.parseInt(br.readLine());
+                        
+                        switch(inner_choice)
+                        {
+                            case 1 :
+                            {
+                                if(a1.linearSearch(searchElement))
+                                {
+                                    System.out.println("Found!!");
+                                }
+                                else
+                                {
+                                    System.out.println("Not Found!");
+                                }
+                                break;
+                            }
+                            case 2 :
+                            {
+                                if(a1.binarySearch(searchElement))
+                                {
+                                    System.out.println("Found!!");
+                                }
+                                else
+                                {
+                                    System.out.println("Not Found!");
+                                }
+                                break;
+                            }
+                            default:
+                            {
+                                System.out.println("Enter valid choice");
+                            }
+                        }
+                    }
+                    while(inner_choice!=3);
                     
                     break;
                 }
