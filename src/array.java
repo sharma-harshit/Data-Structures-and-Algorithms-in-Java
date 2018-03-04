@@ -53,6 +53,68 @@ public class array
         }
         System.out.println("");
     }
+    
+    int inputElement()
+    {
+        try
+        {
+            System.out.println("Enter the number ");
+            return Integer.parseInt(br.readLine());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    void addAtFirst()
+    {
+        int num;
+        do
+        num = inputElement();
+        while(num!=-1);
+        
+        for(int i = size;i>0;i--)
+        {
+            arr[i]=arr[i-1];
+        }
+        arr[0] = num;
+        size++;
+    }
+    
+    void addAtLast()
+    {
+        int num;
+        do
+            num = inputElement();
+        while(num!=-1);
+        
+        arr[size] = num;
+        size++;
+    }
+    
+    void addAtMiddle()
+    {
+        int num;
+        do
+            num = inputElement();
+        while(num!=-1);
+        
+        int pos=size/2;
+        for(int i = size ; i > pos ; i-- )
+        {
+            arr[i] = arr[i-1];
+        }
+        arr[pos] = num;
+        size++;
+    }
+    
+    void addAtPosition(int position)
+    {
+        
+    }
+    
     public static void main(String[] args) throws IOException
     {        
         array a1 = new array();
@@ -94,22 +156,23 @@ public class array
                         {
                             case 1 :
                             {
-                                
+                                a1.addAtFirst();
                                 break;
                             }
                             case 2 :
                             {
-                                
+                                a1.addAtLast();
                                 break;
                             }
                             case 3 :
                             {
-                                
+                                a1.addAtMiddle();
                                 break;
                             }
                             case 4 :
                             {
-                                
+                                System.out.println("Enter the position at the number will be added");
+                                a1.addAtPosition(Integer.parseInt(br.readLine()));
                                 break;
                             }
                             case 5 :
