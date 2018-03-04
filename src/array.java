@@ -112,7 +112,18 @@ public class array
     
     void addAtPosition(int position)
     {
+        int num;
+        do
+            num = inputElement();
+        while(num!=-1);
         
+        int index = position-1;
+        for(int i=size;i>index;i--)
+        {
+            arr[i]= arr[i-1];
+        }
+        arr[index]=num;
+        size++;
     }
     
     public static void main(String[] args) throws IOException
