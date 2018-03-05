@@ -131,7 +131,40 @@ public class array
         int index =linearSearch(element);
         if(index!=-1)
         {
-            
+            int num;
+            do
+                num = inputElement();
+            while(num!=-1);
+
+            for(int i = size ; i > index+1 ; i--)
+            {
+                arr[i] = arr[i-1];
+            }
+            size++;
+            arr[index+1] = num;
+        }
+        else
+        {
+            System.out.println("Entered element doesn't exist!!\nPlease try again.");
+        }
+    }
+    
+    void addBeforeElement(int element)
+    {
+        int index =linearSearch(element);
+        if(index!=-1)
+        {
+            int num;
+            do
+                num = inputElement();
+            while(num!=-1);
+
+            for(int i = size ; i > index ; i--)
+            {
+                arr[i] = arr[i-1];
+            }
+            size++;
+            arr[index] = num;
         }
         else
         {
@@ -237,12 +270,14 @@ public class array
                             }
                             case 5 :
                             {
-                                
+                                System.out.println("Enter the element after which number will be added");
+                                a1.addAfterElement(Integer.parseInt(br.readLine()));
                                 break;
                             }
                             case 6 :
                             {
-                                
+                                System.out.println("Enter the element before which number will be added");
+                                a1.addBeforeElement(Integer.parseInt(br.readLine()));
                                 break;
                             }                            
                             default:
